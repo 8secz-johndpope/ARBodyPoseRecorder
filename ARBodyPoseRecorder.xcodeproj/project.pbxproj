@@ -31,7 +31,6 @@
 		84F2F95C24558892005D5284 /* blue.wav in Resources */ = {isa = PBXBuildFile; fileRef = 84F2F94824558892005D5284 /* blue.wav */; };
 		84F2F95D24558892005D5284 /* beep.wav in Resources */ = {isa = PBXBuildFile; fileRef = 84F2F94924558892005D5284 /* beep.wav */; };
 		84F2F95E24558892005D5284 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F2F94A24558892005D5284 /* Logger.swift */; };
-		84F2F96024558892005D5284 /* MotionCaptureVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F2F94D24558892005D5284 /* MotionCaptureVC.swift */; };
 		84F2F96124558892005D5284 /* ARAssetWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F2F94F24558892005D5284 /* ARAssetWriter.swift */; };
 		84F2F96224558892005D5284 /* ARRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F2F95024558892005D5284 /* ARRecorder.swift */; };
 		84F2F96324558892005D5284 /* PositionCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F2F95224558892005D5284 /* PositionCases.swift */; };
@@ -44,6 +43,7 @@
 		84F2F96A24558892005D5284 /* LeftLegPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F2F95924558892005D5284 /* LeftLegPosition.swift */; };
 		84F2F96B24558892005D5284 /* PoseKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F2F95A24558892005D5284 /* PoseKit.swift */; };
 		84F2F96D24558914005D5284 /* DataPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F2F96C24558914005D5284 /* DataPersistence.swift */; };
+		84F2F96F24558CB5005D5284 /* MotionCaptureVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F2F96E24558CB5005D5284 /* MotionCaptureVC.swift */; };
 		A7F47A9800C8A3156F590981 /* Pods_ARBodyPoseRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDE90F9247A764DA7EBE170E /* Pods_ARBodyPoseRecorder.framework */; };
 /* End PBXBuildFile section */
 
@@ -74,7 +74,6 @@
 		84F2F94824558892005D5284 /* blue.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = blue.wav; sourceTree = "<group>"; };
 		84F2F94924558892005D5284 /* beep.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = beep.wav; sourceTree = "<group>"; };
 		84F2F94A24558892005D5284 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
-		84F2F94D24558892005D5284 /* MotionCaptureVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionCaptureVC.swift; sourceTree = "<group>"; };
 		84F2F94F24558892005D5284 /* ARAssetWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARAssetWriter.swift; sourceTree = "<group>"; };
 		84F2F95024558892005D5284 /* ARRecorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARRecorder.swift; sourceTree = "<group>"; };
 		84F2F95224558892005D5284 /* PositionCases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositionCases.swift; sourceTree = "<group>"; };
@@ -87,6 +86,7 @@
 		84F2F95924558892005D5284 /* LeftLegPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftLegPosition.swift; sourceTree = "<group>"; };
 		84F2F95A24558892005D5284 /* PoseKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoseKit.swift; sourceTree = "<group>"; };
 		84F2F96C24558914005D5284 /* DataPersistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataPersistence.swift; sourceTree = "<group>"; };
+		84F2F96E24558CB5005D5284 /* MotionCaptureVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionCaptureVC.swift; sourceTree = "<group>"; };
 		97DF2526425D9FE4085B486B /* Pods-ARBodyPoseRecorder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARBodyPoseRecorder.debug.xcconfig"; path = "Target Support Files/Pods-ARBodyPoseRecorder/Pods-ARBodyPoseRecorder.debug.xcconfig"; sourceTree = "<group>"; };
 		BDE90F9247A764DA7EBE170E /* Pods_ARBodyPoseRecorder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ARBodyPoseRecorder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9B3DA1FBA554B84EC11AD34 /* Pods-ARBodyPoseRecorder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARBodyPoseRecorder.release.xcconfig"; path = "Target Support Files/Pods-ARBodyPoseRecorder/Pods-ARBodyPoseRecorder.release.xcconfig"; sourceTree = "<group>"; };
@@ -170,12 +170,12 @@
 		84F2F94624558892005D5284 /* MotionCapture */ = {
 			isa = PBXGroup;
 			children = (
+				84F2F96E24558CB5005D5284 /* MotionCaptureVC.swift */,
 				84F2F96C24558914005D5284 /* DataPersistence.swift */,
 				84F2F94724558892005D5284 /* countDown.wav */,
 				84F2F94824558892005D5284 /* blue.wav */,
 				84F2F94924558892005D5284 /* beep.wav */,
 				84F2F94A24558892005D5284 /* Logger.swift */,
-				84F2F94D24558892005D5284 /* MotionCaptureVC.swift */,
 				84F2F94E24558892005D5284 /* ARRecorder */,
 				84F2F95124558892005D5284 /* PoseKit */,
 			);
@@ -346,10 +346,10 @@
 				84F2F96324558892005D5284 /* PositionCases.swift in Sources */,
 				84F2F96724558892005D5284 /* RightLegPosition.swift in Sources */,
 				427EB9AC243BBF680040D424 /* AxisGrid.swift in Sources */,
+				84F2F96F24558CB5005D5284 /* MotionCaptureVC.swift in Sources */,
 				84F2F96D24558914005D5284 /* DataPersistence.swift in Sources */,
 				427EB968243BAA120040D424 /* ViewController.swift in Sources */,
 				427EB9A5243BBF680040D424 /* SCNVector3+Extensions.swift in Sources */,
-				84F2F96024558892005D5284 /* MotionCaptureVC.swift in Sources */,
 				84F2F96524558892005D5284 /* ArmsPosition.swift in Sources */,
 				84F2F96B24558892005D5284 /* PoseKit.swift in Sources */,
 				84F2F96224558892005D5284 /* ARRecorder.swift in Sources */,

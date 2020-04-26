@@ -10,14 +10,16 @@ import UIKit
 import SceneKit
 import ARKit
 import SceneKit.ModelIO
-import Combine
 import RealityKit
 
 
 class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate, RecorderDelegate {
     
-    private var c: Cancellable?
-    
+    // Captured da playing frame
+    var frameIndex: Int = 0
+    var isCapturePlay = false
+    // play frames at time intervals
+    var capturePlayTimer: Timer?
 
 
     @IBOutlet var sceneView: ARSCNView!
@@ -36,7 +38,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate, Re
     let recordButton = UIButton()
     
     var currentFrameIndex : Int = 0
-    
+    var loadCaptureButton = RoundedButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,6 +71,18 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate, Re
         }
         
 
+        self.view.addSubview(loadCaptureButton)
+        loadCaptureButton.snp.makeConstraints { (make) in
+         make.centerX.equalToSuperview()
+         make.bottom.equalToSuperview().offset(-155)
+         make.width.equalTo(200)
+         make.height.equalTo(44)
+        }
+        loadCaptureButton.addTarget(self, action: #selector(playCapturedAnimation), for: .touchUpInside)
+        loadCaptureButton.setTitle("Playback", for: .normal)
+        loadCaptureButton.isEnabled = false
+
+        
         
         
     }
@@ -303,7 +317,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate, Re
                 if let recorder = self.recorder,
                     let frame = self.sceneView.session.currentFrame {
                      DataPersistence.shared.addAnchors(anchors: frame.anchors, lastProcessedFrameTime: frame.timestamp)
-                    
+                    self.loadCaptureButton.isEnabled = true
                     let buffer = frame.capturedImage
                     
                     var time2: CFTimeInterval { return CACurrentMediaTime()}
@@ -346,12 +360,54 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate, Re
         
     }
     
+    // Timer playback
+    
+    @objc func playCapturedAnimation() {
+        stopRecord()
+        // reset any playing animation
+        self.isCapturePlay = false
+        capturePlayTimer?.invalidate()
+        self.frameIndex = 0
+
+   
+        isCapturePlay = true
+        capturePlayTimer?.invalidate()
+        capturePlayTimer = Timer.scheduledTimer(timeInterval: 0.30, target: self, selector: #selector(playFrame), userInfo: nil, repeats: true)
+    }
+
+    @objc func playFrame() {
+
+        print("playFrame...")
+        if self.frameIndex < DataPersistence.shared.capturedAnchorDataArray.count {
+            let bodyAnchors = DataPersistence.shared.capturedAnchorDataArray[self.frameIndex]
+
+            // let frame = bodyAnchors.anchors[0] // there's more here
+
+            for anchor in bodyAnchors.anchors {
+                 print("anchor:", anchor)
+                guard let bodyAnchor = anchor as? ARBodyAnchor else {
+                    print("no bodyAnchor detected...:", anchor)
+                    continue
+
+                }
+
+                self.playCapturedFrame(bodyAnchor)
+                self.frameIndex += 1
+            }
+        }
+        else {
+           self.isCapturePlay = false
+            capturePlayTimer!.invalidate()
+            print("playFrame - end")
+        }
+    }
     
     // MARK: - ARBodyAnchor
     
     
     let parentNode = SCNNode()
     var sphereNodes:[SCNNode] = []
+
     
     func playCapturedFrame(_ bodyAnchor: ARBodyAnchor) {
 
