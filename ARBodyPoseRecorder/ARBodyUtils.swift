@@ -45,9 +45,9 @@ class ARBodyUtils {
     
     static func colorForJointName( _ name : String ) -> UIColor {
         if name.contains("left") {
-            return UIColor.green
+            return UIColor.clear
         } else {
-            return UIColor.blue
+            return UIColor.red
         }
         
     }

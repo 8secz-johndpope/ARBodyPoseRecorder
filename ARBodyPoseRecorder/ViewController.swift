@@ -125,8 +125,8 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate, Re
     
     // MARK: -
     
-    var characterNode : SCNNode!
-    var characterRoot : SCNNode!
+    var characterNode : SCNNode?
+    var characterRoot : SCNNode?
     
     func loadRobot() {
         
@@ -136,21 +136,19 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate, Re
 
         characterNode = scene.rootNode
         
-        let shapeParent = characterNode.childNode(withName: "biped_robot_ace_skeleton", recursively: true)!
+        let shapeParent = characterNode?.childNode(withName: "biped_robot_ace_skeleton", recursively: true)!
         
         // Hierarchy is a bit odd, two 'root' names. Taking the second one
-        characterRoot = shapeParent.childNode(withName: "root", recursively: false)?.childNode(withName: "root", recursively: false)
+        characterRoot = shapeParent?.childNode(withName: "root", recursively: false)?.childNode(withName: "root", recursively: false)
         
-        self.sceneView.scene.rootNode.addChildNode(characterNode)
+        self.sceneView.scene.rootNode.addChildNode(characterNode!)
         
         
     }
     
     @objc func recordButtonTapped() {
         
-        print("removing all frames...")
-        DataPersistence.shared.capturedAnchorDataArray.removeAll()
-        
+   
         self.recorderQueue.async {
             
             if self.isRecording {
@@ -163,7 +161,9 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate, Re
             } else {
                 
                 Haptics.strongBoom()
-                
+                print("removing all frames...")
+                DataPersistence.shared.capturedAnchorDataArray.removeAll()
+                   
                 
                 if let frame = self.sceneView.session.currentFrame,
                     let projectUrl = self.getNewProjectUrl() {
@@ -410,6 +410,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate, Re
     
     func playCapturedFrame(_ bodyAnchor: ARBodyAnchor) {
 
+        guard let characterRoot = characterRoot else{return}
         // Update Robot Character
         characterRoot.transform = SCNMatrix4.init(bodyAnchor.transform)
         
@@ -443,7 +444,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate, Re
                     ARBodyUtils.colorForJointName(joints[i].rawValue)
                 
                 //let sphereNode = SCNNode()
-                sphereNode.showAxes(radius: 0.0085, height: 0.15)
+               // sphereNode.showAxes(radius: 0.0085, height: 0.15)
                 
                  parentNode.addChildNode(sphereNode)
                  sphereNodes.append(sphereNode)
