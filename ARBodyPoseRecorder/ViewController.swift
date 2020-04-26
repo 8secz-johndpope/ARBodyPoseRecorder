@@ -468,6 +468,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate, Re
     }
     func session(_ session: ARSession, didUpdate anchors: [ARAnchor]) {
 
+        if isCapturePlay {return}
         for anchor in anchors {
             
             guard let bodyAnchor = anchor as? ARBodyAnchor else { continue }
