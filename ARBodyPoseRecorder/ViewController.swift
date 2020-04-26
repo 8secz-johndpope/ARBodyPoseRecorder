@@ -207,6 +207,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate, Re
             
             DispatchQueue.main.async {
                 self.recordButton.backgroundColor = UIColor.white
+                self.loadCaptureButton.isEnabled = true
             }
             
         }
@@ -317,7 +318,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate, Re
                 if let recorder = self.recorder,
                     let frame = self.sceneView.session.currentFrame {
                      DataPersistence.shared.addAnchors(anchors: frame.anchors, lastProcessedFrameTime: frame.timestamp)
-                    self.loadCaptureButton.isEnabled = true
+                    //
                     let buffer = frame.capturedImage
                     
                     var time2: CFTimeInterval { return CACurrentMediaTime()}
