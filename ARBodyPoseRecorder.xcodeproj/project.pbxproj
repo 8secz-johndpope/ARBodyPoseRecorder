@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -27,6 +27,24 @@
 		427EB9B0243BBF680040D424 /* SCNVector4+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427EB9A1243BBF680040D424 /* SCNVector4+Extensions.swift */; };
 		427EB9B1243BBF680040D424 /* SCNNode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427EB9A2243BBF680040D424 /* SCNNode+Extensions.swift */; };
 		427EB9B4243BCF470040D424 /* robot.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 427EB9B3243BCF460040D424 /* robot.usdz */; };
+		84F2F95B24558892005D5284 /* countDown.wav in Resources */ = {isa = PBXBuildFile; fileRef = 84F2F94724558892005D5284 /* countDown.wav */; };
+		84F2F95C24558892005D5284 /* blue.wav in Resources */ = {isa = PBXBuildFile; fileRef = 84F2F94824558892005D5284 /* blue.wav */; };
+		84F2F95D24558892005D5284 /* beep.wav in Resources */ = {isa = PBXBuildFile; fileRef = 84F2F94924558892005D5284 /* beep.wav */; };
+		84F2F95E24558892005D5284 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F2F94A24558892005D5284 /* Logger.swift */; };
+		84F2F96024558892005D5284 /* MotionCaptureVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F2F94D24558892005D5284 /* MotionCaptureVC.swift */; };
+		84F2F96124558892005D5284 /* ARAssetWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F2F94F24558892005D5284 /* ARAssetWriter.swift */; };
+		84F2F96224558892005D5284 /* ARRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F2F95024558892005D5284 /* ARRecorder.swift */; };
+		84F2F96324558892005D5284 /* PositionCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F2F95224558892005D5284 /* PositionCases.swift */; };
+		84F2F96424558892005D5284 /* LegsPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F2F95324558892005D5284 /* LegsPosition.swift */; };
+		84F2F96524558892005D5284 /* ArmsPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F2F95424558892005D5284 /* ArmsPosition.swift */; };
+		84F2F96624558892005D5284 /* RightArmPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F2F95524558892005D5284 /* RightArmPosition.swift */; };
+		84F2F96724558892005D5284 /* RightLegPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F2F95624558892005D5284 /* RightLegPosition.swift */; };
+		84F2F96824558892005D5284 /* LeftArmPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F2F95724558892005D5284 /* LeftArmPosition.swift */; };
+		84F2F96924558892005D5284 /* Bodypart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F2F95824558892005D5284 /* Bodypart.swift */; };
+		84F2F96A24558892005D5284 /* LeftLegPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F2F95924558892005D5284 /* LeftLegPosition.swift */; };
+		84F2F96B24558892005D5284 /* PoseKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F2F95A24558892005D5284 /* PoseKit.swift */; };
+		84F2F96D24558914005D5284 /* DataPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F2F96C24558914005D5284 /* DataPersistence.swift */; };
+		A7F47A9800C8A3156F590981 /* Pods_ARBodyPoseRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDE90F9247A764DA7EBE170E /* Pods_ARBodyPoseRecorder.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +70,26 @@
 		427EB9A1243BBF680040D424 /* SCNVector4+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SCNVector4+Extensions.swift"; sourceTree = "<group>"; };
 		427EB9A2243BBF680040D424 /* SCNNode+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SCNNode+Extensions.swift"; sourceTree = "<group>"; };
 		427EB9B3243BCF460040D424 /* robot.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = robot.usdz; sourceTree = "<group>"; };
+		84F2F94724558892005D5284 /* countDown.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = countDown.wav; sourceTree = "<group>"; };
+		84F2F94824558892005D5284 /* blue.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = blue.wav; sourceTree = "<group>"; };
+		84F2F94924558892005D5284 /* beep.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = beep.wav; sourceTree = "<group>"; };
+		84F2F94A24558892005D5284 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		84F2F94D24558892005D5284 /* MotionCaptureVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionCaptureVC.swift; sourceTree = "<group>"; };
+		84F2F94F24558892005D5284 /* ARAssetWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARAssetWriter.swift; sourceTree = "<group>"; };
+		84F2F95024558892005D5284 /* ARRecorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARRecorder.swift; sourceTree = "<group>"; };
+		84F2F95224558892005D5284 /* PositionCases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositionCases.swift; sourceTree = "<group>"; };
+		84F2F95324558892005D5284 /* LegsPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegsPosition.swift; sourceTree = "<group>"; };
+		84F2F95424558892005D5284 /* ArmsPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArmsPosition.swift; sourceTree = "<group>"; };
+		84F2F95524558892005D5284 /* RightArmPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightArmPosition.swift; sourceTree = "<group>"; };
+		84F2F95624558892005D5284 /* RightLegPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightLegPosition.swift; sourceTree = "<group>"; };
+		84F2F95724558892005D5284 /* LeftArmPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftArmPosition.swift; sourceTree = "<group>"; };
+		84F2F95824558892005D5284 /* Bodypart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bodypart.swift; sourceTree = "<group>"; };
+		84F2F95924558892005D5284 /* LeftLegPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftLegPosition.swift; sourceTree = "<group>"; };
+		84F2F95A24558892005D5284 /* PoseKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoseKit.swift; sourceTree = "<group>"; };
+		84F2F96C24558914005D5284 /* DataPersistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataPersistence.swift; sourceTree = "<group>"; };
+		97DF2526425D9FE4085B486B /* Pods-ARBodyPoseRecorder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARBodyPoseRecorder.debug.xcconfig"; path = "Target Support Files/Pods-ARBodyPoseRecorder/Pods-ARBodyPoseRecorder.debug.xcconfig"; sourceTree = "<group>"; };
+		BDE90F9247A764DA7EBE170E /* Pods_ARBodyPoseRecorder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ARBodyPoseRecorder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E9B3DA1FBA554B84EC11AD34 /* Pods-ARBodyPoseRecorder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARBodyPoseRecorder.release.xcconfig"; path = "Target Support Files/Pods-ARBodyPoseRecorder/Pods-ARBodyPoseRecorder.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7F47A9800C8A3156F590981 /* Pods_ARBodyPoseRecorder.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +109,8 @@
 			children = (
 				427EB962243BAA120040D424 /* ARBodyPoseRecorder */,
 				427EB961243BAA120040D424 /* Products */,
+				DFAEF21DE05E3B573B4C7812 /* Pods */,
+				A3460F850D16E96891F0A05D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -84,6 +125,7 @@
 		427EB962243BAA120040D424 /* ARBodyPoseRecorder */ = {
 			isa = PBXGroup;
 			children = (
+				84F2F94624558892005D5284 /* MotionCapture */,
 				427EB963243BAA120040D424 /* AppDelegate.swift */,
 				427EB967243BAA120040D424 /* ViewController.swift */,
 				427EB979243BAB520040D424 /* ARBodyUtils.swift */,
@@ -125,6 +167,63 @@
 			path = character;
 			sourceTree = "<group>";
 		};
+		84F2F94624558892005D5284 /* MotionCapture */ = {
+			isa = PBXGroup;
+			children = (
+				84F2F96C24558914005D5284 /* DataPersistence.swift */,
+				84F2F94724558892005D5284 /* countDown.wav */,
+				84F2F94824558892005D5284 /* blue.wav */,
+				84F2F94924558892005D5284 /* beep.wav */,
+				84F2F94A24558892005D5284 /* Logger.swift */,
+				84F2F94D24558892005D5284 /* MotionCaptureVC.swift */,
+				84F2F94E24558892005D5284 /* ARRecorder */,
+				84F2F95124558892005D5284 /* PoseKit */,
+			);
+			path = MotionCapture;
+			sourceTree = "<group>";
+		};
+		84F2F94E24558892005D5284 /* ARRecorder */ = {
+			isa = PBXGroup;
+			children = (
+				84F2F94F24558892005D5284 /* ARAssetWriter.swift */,
+				84F2F95024558892005D5284 /* ARRecorder.swift */,
+			);
+			path = ARRecorder;
+			sourceTree = "<group>";
+		};
+		84F2F95124558892005D5284 /* PoseKit */ = {
+			isa = PBXGroup;
+			children = (
+				84F2F95224558892005D5284 /* PositionCases.swift */,
+				84F2F95324558892005D5284 /* LegsPosition.swift */,
+				84F2F95424558892005D5284 /* ArmsPosition.swift */,
+				84F2F95524558892005D5284 /* RightArmPosition.swift */,
+				84F2F95624558892005D5284 /* RightLegPosition.swift */,
+				84F2F95724558892005D5284 /* LeftArmPosition.swift */,
+				84F2F95824558892005D5284 /* Bodypart.swift */,
+				84F2F95924558892005D5284 /* LeftLegPosition.swift */,
+				84F2F95A24558892005D5284 /* PoseKit.swift */,
+			);
+			path = PoseKit;
+			sourceTree = "<group>";
+		};
+		A3460F850D16E96891F0A05D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BDE90F9247A764DA7EBE170E /* Pods_ARBodyPoseRecorder.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DFAEF21DE05E3B573B4C7812 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				97DF2526425D9FE4085B486B /* Pods-ARBodyPoseRecorder.debug.xcconfig */,
+				E9B3DA1FBA554B84EC11AD34 /* Pods-ARBodyPoseRecorder.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +231,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 427EB974243BAA150040D424 /* Build configuration list for PBXNativeTarget "ARBodyPoseRecorder" */;
 			buildPhases = (
+				AC172632E674D649852C90E9 /* [CP] Check Pods Manifest.lock */,
 				427EB95C243BAA120040D424 /* Sources */,
 				427EB95D243BAA120040D424 /* Frameworks */,
 				427EB95E243BAA120040D424 /* Resources */,
+				D3DBE9F9C69EB8BAEA01DF62 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -183,8 +284,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84F2F95C24558892005D5284 /* blue.wav in Resources */,
+				84F2F95B24558892005D5284 /* countDown.wav in Resources */,
 				427EB9B4243BCF470040D424 /* robot.usdz in Resources */,
 				427EB970243BAA150040D424 /* LaunchScreen.storyboard in Resources */,
+				84F2F95D24558892005D5284 /* beep.wav in Resources */,
 				427EB96D243BAA150040D424 /* Assets.xcassets in Resources */,
 				427EB96B243BAA120040D424 /* Main.storyboard in Resources */,
 			);
@@ -192,20 +296,76 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		AC172632E674D649852C90E9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ARBodyPoseRecorder-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D3DBE9F9C69EB8BAEA01DF62 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ARBodyPoseRecorder/Pods-ARBodyPoseRecorder-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ARBodyPoseRecorder/Pods-ARBodyPoseRecorder-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ARBodyPoseRecorder/Pods-ARBodyPoseRecorder-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		427EB95C243BAA120040D424 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84F2F96324558892005D5284 /* PositionCases.swift in Sources */,
+				84F2F96724558892005D5284 /* RightLegPosition.swift in Sources */,
 				427EB9AC243BBF680040D424 /* AxisGrid.swift in Sources */,
+				84F2F96D24558914005D5284 /* DataPersistence.swift in Sources */,
 				427EB968243BAA120040D424 /* ViewController.swift in Sources */,
 				427EB9A5243BBF680040D424 /* SCNVector3+Extensions.swift in Sources */,
+				84F2F96024558892005D5284 /* MotionCaptureVC.swift in Sources */,
+				84F2F96524558892005D5284 /* ArmsPosition.swift in Sources */,
+				84F2F96B24558892005D5284 /* PoseKit.swift in Sources */,
+				84F2F96224558892005D5284 /* ARRecorder.swift in Sources */,
 				427EB9A4243BBF680040D424 /* ProjectionUtils.swift in Sources */,
+				84F2F96424558892005D5284 /* LegsPosition.swift in Sources */,
 				427EB9AB243BBF680040D424 /* SCNPointCloud.swift in Sources */,
+				84F2F96924558892005D5284 /* Bodypart.swift in Sources */,
 				427EB9B1243BBF680040D424 /* SCNNode+Extensions.swift in Sources */,
+				84F2F96124558892005D5284 /* ARAssetWriter.swift in Sources */,
+				84F2F96624558892005D5284 /* RightArmPosition.swift in Sources */,
 				427EB9A7243BBF680040D424 /* float4x4+Extensions.swift in Sources */,
 				427EB964243BAA120040D424 /* AppDelegate.swift in Sources */,
+				84F2F96824558892005D5284 /* LeftArmPosition.swift in Sources */,
+				84F2F95E24558892005D5284 /* Logger.swift in Sources */,
 				427EB9AD243BBF680040D424 /* Haptics.swift in Sources */,
+				84F2F96A24558892005D5284 /* LeftLegPosition.swift in Sources */,
 				427EB9AF243BBF680040D424 /* SKLine.swift in Sources */,
 				427EB9AA243BBF680040D424 /* UsefulExtensions.swift in Sources */,
 				427EB9A8243BBF680040D424 /* CG+Arithmetic.swift in Sources */,
@@ -354,10 +514,11 @@
 		};
 		427EB975243BAA150040D424 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 97DF2526425D9FE4085B486B /* Pods-ARBodyPoseRecorder.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 34FWY7G2HB;
+				DEVELOPMENT_TEAM = 48K8QNQU37;
 				INFOPLIST_FILE = ARBodyPoseRecorder/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -373,6 +534,7 @@
 		};
 		427EB976243BAA150040D424 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E9B3DA1FBA554B84EC11AD34 /* Pods-ARBodyPoseRecorder.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

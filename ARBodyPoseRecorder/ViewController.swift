@@ -10,18 +10,15 @@ import UIKit
 import SceneKit
 import ARKit
 import SceneKit.ModelIO
+import Combine
+import RealityKit
+
 
 class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate, RecorderDelegate {
     
-    func recorder(didEndRecording path: URL, with noError: Bool) {
-        print("recorder(didEndRecording")
-    }
+    private var c: Cancellable?
     
-    func recorder(didFailRecording error: Error?, and status: String) {
-        print("recorder(didFailRecording")
-        self.alert("Recording had an error")
-    }
-    
+
 
     @IBOutlet var sceneView: ARSCNView!
     
@@ -70,6 +67,8 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate, Re
         DispatchQueue.global().async {
             self.loadRobot()
         }
+        
+
         
         
     }
@@ -303,6 +302,8 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate, Re
                 
                 if let recorder = self.recorder,
                     let frame = self.sceneView.session.currentFrame {
+                     DataPersistence.shared.addAnchors(anchors: frame.anchors, lastProcessedFrameTime: frame.timestamp)
+                    
                     let buffer = frame.capturedImage
                     
                     var time2: CFTimeInterval { return CACurrentMediaTime()}
@@ -311,6 +312,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate, Re
                     
                     if addedFrame {
                         self.saveMetadata(frame: frame, time: time2, frameIndex: self.currentFrameIndex)
+                        
                         self.currentFrameIndex += 1
                     }
                     
@@ -351,67 +353,69 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate, Re
     let parentNode = SCNNode()
     var sphereNodes:[SCNNode] = []
     
+    func playCapturedFrame(_ bodyAnchor: ARBodyAnchor) {
+
+        // Update Robot Character
+        characterRoot.transform = SCNMatrix4.init(bodyAnchor.transform)
+        
+        for joint in ARBodyUtils.allJoints {
+            if let childNode = characterRoot.childNode(withName: joint.rawValue, recursively: true) {
+                if let transform = bodyAnchor.skeleton.localTransform(for: joint) {
+                    childNode.transform = SCNMatrix4.init(transform)
+                }
+            }
+        }
+        
+        
+        // -
+        parentNode.transform = SCNMatrix4.init(bodyAnchor.transform)
+        
+        let joints = ARBodyUtils.selectedJointNames
+        //let joints = ARBodyUtils.allJoints
+        
+        if sphereNodes.count == 0 {
+            
+            // create joints
+             self.sceneView.scene.rootNode.addChildNode(parentNode)
+             
+             for  i in 0..<joints.count {
+                 
+                let boxSize : CGFloat = 0.06
+                let sphereNode = SCNNode(geometry:
+                    SCNBox(width: boxSize*1.9, height: boxSize, length: boxSize, chamferRadius: 0) )
+
+                sphereNode.geometry?.firstMaterial?.diffuse.contents =
+                    ARBodyUtils.colorForJointName(joints[i].rawValue)
+                
+                //let sphereNode = SCNNode()
+                sphereNode.showAxes(radius: 0.0085, height: 0.15)
+                
+                 parentNode.addChildNode(sphereNode)
+                 sphereNodes.append(sphereNode)
+                 
+             }
+            
+        }
+        
+        for  i in 0..<joints.count {
+            
+            if let transform = bodyAnchor.skeleton.modelTransform(for: joints[i]) {
+                
+                //let position = bodyPosition + simd_make_float3(transform.columns.3)
+                //sphereNodes[i].position = SCNVector3(position.x, position.y, position.z)
+                
+                sphereNodes[i].transform = SCNMatrix4.init(transform)
+                
+            }
+        }
+    }
     func session(_ session: ARSession, didUpdate anchors: [ARAnchor]) {
 
         for anchor in anchors {
             
             guard let bodyAnchor = anchor as? ARBodyAnchor else { continue }
-             
-            //let bodyPosition = simd_make_float3(bodyAnchor.transform.columns.3)
+            self.playCapturedFrame(bodyAnchor)
             
-            // Update Robot Character
-            characterRoot.transform = SCNMatrix4.init(bodyAnchor.transform)
-            
-            for joint in ARBodyUtils.allJoints {
-                if let childNode = characterRoot.childNode(withName: joint.rawValue, recursively: true) {
-                    if let transform = bodyAnchor.skeleton.localTransform(for: joint) {
-                        childNode.transform = SCNMatrix4.init(transform)
-                    }
-                }
-            }
-            
-            
-            // -
-            parentNode.transform = SCNMatrix4.init(bodyAnchor.transform)
-            
-            let joints = ARBodyUtils.selectedJointNames
-            //let joints = ARBodyUtils.allJoints
-            
-            if sphereNodes.count == 0 {
-                
-                // create joints
-                 self.sceneView.scene.rootNode.addChildNode(parentNode)
-                 
-                 for  i in 0..<joints.count {
-                     
-                    let boxSize : CGFloat = 0.06
-                    let sphereNode = SCNNode(geometry:
-                        SCNBox(width: boxSize*1.9, height: boxSize, length: boxSize, chamferRadius: 0) )
-
-                    sphereNode.geometry?.firstMaterial?.diffuse.contents =
-                        ARBodyUtils.colorForJointName(joints[i].rawValue)
-                    
-                    //let sphereNode = SCNNode()
-                    sphereNode.showAxes(radius: 0.0085, height: 0.15)
-                    
-                     parentNode.addChildNode(sphereNode)
-                     sphereNodes.append(sphereNode)
-                     
-                 }
-                
-            }
-            
-            for  i in 0..<joints.count {
-                
-                if let transform = bodyAnchor.skeleton.modelTransform(for: joints[i]) {
-                    
-                    //let position = bodyPosition + simd_make_float3(transform.columns.3)
-                    //sphereNodes[i].position = SCNVector3(position.x, position.y, position.z)
-                    
-                    sphereNodes[i].transform = SCNMatrix4.init(transform)
-                    
-                }
-            }
             
         }
         
@@ -424,6 +428,14 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate, Re
         let alert = UIAlertController(title: "Alert", message: msg, preferredStyle: .alert)
         self.present(alert, animated: true)
         
+    }
+    func recorder(didEndRecording path: URL, with noError: Bool) {
+        print("recorder(didEndRecording")
+    }
+    
+    func recorder(didFailRecording error: Error?, and status: String) {
+        print("recorder(didFailRecording")
+        self.alert("Recording had an error")
     }
     
 }
