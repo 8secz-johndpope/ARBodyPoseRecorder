@@ -148,7 +148,9 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate, Re
     
     @objc func recordButtonTapped() {
         
-       
+        print("removing all frames...")
+        DataPersistence.shared.capturedAnchorDataArray.removeAll()
+        
         self.recorderQueue.async {
             
             if self.isRecording {
@@ -311,7 +313,10 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate, Re
     
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
         
-        if self.isRecording {
+        if self.isCapturePlay{
+            self.playFrame()
+            
+        }else if self.isRecording {
             
             self.recorderQueue.async {
                 
@@ -365,15 +370,9 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate, Re
     
     @objc func playCapturedAnimation() {
         stopRecord()
-        // reset any playing animation
-        self.isCapturePlay = false
-        capturePlayTimer?.invalidate()
-        self.frameIndex = 0
-
    
         isCapturePlay = true
-        capturePlayTimer?.invalidate()
-        capturePlayTimer = Timer.scheduledTimer(timeInterval: 0.30, target: self, selector: #selector(playFrame), userInfo: nil, repeats: true)
+        self.frameIndex = 0
     }
 
     @objc func playFrame() {
@@ -385,9 +384,9 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate, Re
             // let frame = bodyAnchors.anchors[0] // there's more here
 
             for anchor in bodyAnchors.anchors {
-                 print("anchor:", anchor)
+                 //print("anchor:", anchor)
                 guard let bodyAnchor = anchor as? ARBodyAnchor else {
-                    print("no bodyAnchor detected...:", anchor)
+                   // print("no bodyAnchor detected...:", anchor)
                     continue
 
                 }
@@ -398,7 +397,6 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate, Re
         }
         else {
            self.isCapturePlay = false
-            capturePlayTimer!.invalidate()
             print("playFrame - end")
         }
     }
